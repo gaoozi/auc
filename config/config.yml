@@ -1,0 +1,12 @@
+server:
+  name: "auc"
+  port: 8000
+
+database:
+  url: "127.0.0.1:3306"
+  user: "database user name"
+  password: "database user password"
+  name: "aucdb"
+  max_idle_conn: 5
+  max_open_conn: 20
+  max_idle_time: 300
