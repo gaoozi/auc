@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/gaoozi/auc/config"
+	"github.com/gaoozi/auc/db"
 	"github.com/gaoozi/auc/router"
 	"github.com/joho/godotenv"
 )
@@ -17,5 +18,6 @@ func main() {
   }
 
   config.GetConfig()
+  db.GetDb()
   router.Serve()
 }
