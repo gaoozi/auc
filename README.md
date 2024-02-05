@@ -3,8 +3,8 @@ A user center system built with go
 
 ## TechStack
 
-backend: go + gin + gorm + mysql
-frontend: react + Ant Design/Tailwind CSS + Next.js
+- backend: go + gin + gorm + mysql
+- frontend: react + Ant Design/Tailwind CSS + Next.js
 
 ## Goal
 
