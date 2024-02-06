@@ -17,3 +17,10 @@ type User struct {
 	UpdatedAt time.Time `gorm:"autoUpdateTime:true"`
 	IsDelete  int8      `gorm:"default:0"`
 }
+
+type RegisterRequest struct {
+	Username      string
+	Password      string
+	CheckPassword string
+}
+
