@@ -2,8 +2,10 @@ package router
 
 import (
 	"log/slog"
+	"strconv"
 
 	"github.com/gaoozi/auc/api"
+	"github.com/gaoozi/auc/config"
 	"github.com/gin-gonic/gin"
 )
 
@@ -13,7 +15,8 @@ func Serve() {
   r := gin.Default()
   r.GET("ping", api.Ping)
 
-  if err := r.Run(":8000"); err != nil {
+  conf := config.GetConfig()
+  if err := r.Run(":" + strconv.Itoa(conf.Server.Port)); err != nil {
     slog.Error("start server err:", err)
   }
 }

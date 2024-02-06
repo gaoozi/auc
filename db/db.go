@@ -7,6 +7,7 @@ import (
 	"sync"
 
 	"github.com/gaoozi/auc/config"
+  "github.com/gaoozi/auc/model"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -28,6 +29,8 @@ func connect() {
 		slog.Error("database connect is not available: ", err)
 		os.Exit(1)
 	}
+
+  db.AutoMigrate(&model.User{})
 	slog.Info("database connection is available")
 }
 
