@@ -1,6 +1,8 @@
 package model
 
-import "time"
+import (
+  "time"
+)
 
 type User struct {
 	ID        int64 `gorm:"primary_key"`
@@ -19,8 +21,8 @@ type User struct {
 }
 
 type RegisterRequest struct {
-	Username      string
-	Password      string
-	CheckPassword string
+  Username      string `binding:"required,min=6,max=32"`
+  Password      string `binding:"required,min=6,max=64"`
+  CheckPassword string `binding:"required,min=6,max=64"`
 }
 

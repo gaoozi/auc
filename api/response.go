@@ -20,6 +20,7 @@ const (
 	LogoutErr   ApiCode = 10005
 	GetErr      ApiCode = 10006
 	UpdateErr   ApiCode = 10007
+  HashErr     ApiCode = 10008
 	Unknown     ApiCode = 20000
 )
 
@@ -42,8 +43,9 @@ func (resp *ApiResponse) Success() {
   resp.Ctx.JSON(http.StatusOK, resp)
 }
 
-func (resp *ApiResponse) WithData() {
+func (resp *ApiResponse) WithData(data interface{}) {
   resp.Code = Success
   resp.Message = "success"
+  resp.Data = data
   resp.Ctx.JSON(http.StatusOK, resp)
 }
