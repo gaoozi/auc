@@ -19,6 +19,7 @@ func Serve() {
   userGroup := apiGroup.Group("/user")
   {
     userGroup.POST("/register", api.Register)
+    userGroup.POST("/login", api.Login)
   }
 
   conf := config.GetConfig()

@@ -60,3 +60,24 @@ func Register(ctx *gin.Context) {
 
   resp.WithData(user.ID)
 }
+
+func Login(ctx *gin.Context) {
+  resp := ApiResponse{Ctx: ctx}
+  
+  req := model.LoginRequest{}
+  if err := ctx.ShouldBindJSON(req); err != nil {
+    slog.Error("Login request parse err:", err)
+    resp.Error(BodyBindErr, err.Error())
+    return
+  }
+
+  user := &model.User{}
+  result := db.GetDb().First(user, "Username = ?", req.Username)
+  if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+    slog.Error("Not found this user:", result.Error)
+    resp.Error(GetErr, "Not found this user")
+    return
+  }
+  
+  resp.WithData(user)
+}
